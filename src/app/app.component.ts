@@ -1,24 +1,16 @@
-import {Component} from '@angular/core';
-import {
-  WeekService,
-  MonthService,
-  WorkWeekService,
-  EventSettingsModel,
-  DayService, YearService, AgendaService, TimelineViewsService, TimelineMonthService, TimelineYearService
-} from '@syncfusion/ej2-angular-schedule';
+import { Component } from '@angular/core';
+import { WeekService, MonthService, WorkWeekService, EventSettingsModel } from '@syncfusion/ej2-angular-schedule';
 import {defaultData} from "./datasource";
 
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  providers: [DayService, WeekService, WorkWeekService, MonthService, YearService, AgendaService,
-    TimelineViewsService, TimelineMonthService, TimelineYearService],
+  providers: [WeekService, MonthService, WorkWeekService],
   // specifies the template string for the Schedule component
 })
 export class AppComponent {
   public selectedDate: Date = new Date(2021, 6, 11);
   public showWeekend: boolean = false;
-  public eventSettings: EventSettingsModel = {dataSource: defaultData};
+  public eventSettings: EventSettingsModel = { dataSource: defaultData };
 }
-
