@@ -69,6 +69,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "scheduler-example:build"
+          },
           "configurations": {
             "production": {
               "browserTarget": "scheduler-example:build:production"

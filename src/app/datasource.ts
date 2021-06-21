@@ -6,9 +6,9 @@ export let defaultData: Object[] = [
   {
     Id: 1,
     Subject: 'Conference',
-    StartTime: new Date(2021, 6, 7, 10, 0),
-    EndTime: new Date(2021, 6, 7, 11, 0),
-    IsAllDay: false
+    StartTime: new Date(2021, 6, 14, 10, 0),
+    EndTime: new Date(2021, 6, 14, 11, 0),
+    RecurrenceRule: "FREQ=DAILY;INTERVAL=2;COUNT=10"
   }, {
     Id: 2,
     Subject: 'Meeting - 1',
@@ -20,7 +20,8 @@ export let defaultData: Object[] = [
     Subject: 'Paris',
     StartTime: new Date(2021, 6, 13, 12, 0),
     EndTime: new Date(2021, 6, 13, 12, 30),
-    IsAllDay: false
+    IsAllDay: false,
+    IsBlock: true
   }, {
     Id: 4,
     Subject: 'Vacation',
