@@ -1,18 +1,58 @@
-<ng-container #scheduleObj>
-
-  <ejs-schedule width='100%' height='550px'
-                [selectedDate]="selectedDate"
-                [eventSettings]="eventSettings"
-                [currentView]="currentView"
-                (actionBegin)="onActionBegin($event)"
-                (eventRendered)="oneventRendered($event)"
-
-  >
+<div class="control-section">
+  <ejs-schedule #scheduleObj width='100%' height='550px' [selectedDate]="selectedDate" [eventSettings]="eventSettings"
+                (popupOpen)="onPopUpOpen($event)"
+                (actionBegin)="onActionBegin($event)" (eventRendered)="onEventRendered($event)" [showQuickInfo]="showQuickInfo">
     <e-views>
-      <e-view option="Week" startHour="07:00" endHour="15:00"></e-view>
-      <e-view option="WorkWeek" startHour="10:00" endHour="18:00"></e-view>
-      <e-view option="Month" [showWeekend]="showWeekend"></e-view>
+      <e-view option="Day"></e-view>
+      <e-view option="Week"></e-view>
+      <e-view option="WorkWeek"></e-view>
+      <e-view option="Month"></e-view>
     </e-views>
+    <ng-template #editorTemplate let-data>
+      <table *ngIf="data != undefined" class="custom-event-editor" width="100%" cellpadding="5">
+        <tbody>
+        <tr>
+          <td class="e-textlabel">Summary</td>
+          <td colspan="4">
+            <input id="Subject" class="e-field e-input" type="text" value="{{data.Subject}}"
+                   name="Subject" style="width: 100%" />
+          </td>
+        </tr>
+        <tr>
+          <td class="e-textlabel">Status</td>
+          <td colspan="4">
+            <ejs-dropdownlist id='Status' class="e-field" data-name="Status" placeholder='Choose Status'
+                              [dataSource]='StatusData' [fields]='statusFields' value='{{data.Status}}'>
+            </ejs-dropdownlist>
+          </td>
+        </tr>
+        <tr>
+          <td class="e-textlabel">From</td>
+          <td colspan="4">
+            <ejs-datetimepicker id="StartTime" class="e-field" data-name="StartTime"
+                                format="M/dd/yy h:mm a" [value]="dateParser(data.startTime || data.StartTime)">
+            </ejs-datetimepicker>
+          </td>
+        </tr>
+        <tr>
+          <td class="e-textlabel">To</td>
+          <td colspan="4">
+            <ejs-datetimepicker id="EndTime" class="e-field" data-name="EndTime" format="M/dd/yy h:mm a"
+                                [value]='dateParser(data.endTime || data.EndTime)'></ejs-datetimepicker>
+          </td>
+        </tr>
+        <tr>
+          <td class="e-textlabel">Reason</td>
+          <td colspan="4">
+                            <textarea id="Description" class="e-field e-input" name="Description" rows="3" cols="50"
+                                      value="{{data.Description}}"
+                                      style="width: 100%; height: 60px !important; resize: vertical"></textarea>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </ng-template>
   </ejs-schedule>
-</ng-container>
+
+</div>
 
