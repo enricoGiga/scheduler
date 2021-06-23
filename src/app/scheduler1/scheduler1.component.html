@@ -1,0 +1,18 @@
+<ng-container #scheduleObj>
+
+  <ejs-schedule width='100%' height='550px'
+                [selectedDate]="selectedDate"
+                [eventSettings]="eventSettings"
+                [currentView]="currentView"
+                (actionBegin)="onActionBegin($event)"
+                (eventRendered)="oneventRendered($event)"
+
+  >
+    <e-views>
+      <e-view option="Week" startHour="07:00" endHour="15:00"></e-view>
+      <e-view option="WorkWeek" startHour="10:00" endHour="18:00"></e-view>
+      <e-view option="Month" [showWeekend]="showWeekend"></e-view>
+    </e-views>
+  </ejs-schedule>
+</ng-container>
+
