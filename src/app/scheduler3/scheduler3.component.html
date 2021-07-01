@@ -2,7 +2,9 @@
   <ejs-schedule #scheduleObj cssClass='schedule-group-custom-work-days' width='100%' height='650px' [currentView]="currentView"
                 [group]="group" [selectedDate]="selectedDate" (actionBegin)="onActionBegin($event)" (popupOpen)="onPopupOpen($event)"
                 (renderCell)="onRenderCell($event)" [eventSettings]="eventSettings" [allowResizing]="allowResizing"
-                [allowDragAndDrop]="allowDragDrop">
+                [allowDragAndDrop]="allowDragDrop"
+
+  >
     <ng-template #resourceHeaderTemplate let-data>
       <div class='template-wrap'>
         <div class="resource-image {{getDoctorImage(data)}}"></div>

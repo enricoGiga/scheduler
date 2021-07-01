@@ -1,0 +1,19 @@
+.custom-event-editor .e-textlabel {
+  padding-right: 15px;
+  text-align: right;
+}
+
+.custom-event-editor td {
+  padding: 7px 16px 7px 7px;
+}
+
+.e-schedule .e-appointment-details {
+  padding: 0 !important;
+}
+.template-wrapper{
+  background: bisque;
+  padding: 10px;
+  padding-left: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}

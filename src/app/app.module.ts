@@ -12,6 +12,9 @@ import {DropDownListAllModule} from "@syncfusion/ej2-angular-dropdowns";
 import { Scheduler4Component } from './scheduler4/scheduler4.component';
 import {ButtonAllModule} from "@syncfusion/ej2-angular-buttons";
 import { Scheduler5Component } from './scheduler5/scheduler5.component';
+import {ContextMenuModule, TreeViewModule} from "@syncfusion/ej2-angular-navigations";
+import {Scheduler6Component} from "./scheduler6/scheduler6.component";
+import { ContextalMenuComponent } from './contextal-menu/contextal-menu.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +23,13 @@ import { Scheduler5Component } from './scheduler5/scheduler5.component';
     Scheduler2Component,
     Scheduler3Component,
     Scheduler4Component,
-    Scheduler5Component
+    Scheduler5Component,
+    Scheduler6Component,
+    ContextalMenuComponent
   ],
-  imports: [
-    BrowserModule, ScheduleModule, AppRoutingModule, DateTimePickerAllModule, DropDownListAllModule, ButtonAllModule
-  ],
+    imports: [
+        BrowserModule, ScheduleModule, AppRoutingModule, DateTimePickerAllModule, DropDownListAllModule, ButtonAllModule, TreeViewModule, ContextMenuModule
+    ],
   providers: [WeekService,
     MonthService],
   bootstrap: [AppComponent]

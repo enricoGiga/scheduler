@@ -1,7 +1,18 @@
 <div class="control-section">
-  <ejs-schedule #scheduleObj width='100%' height='550px' [selectedDate]="selectedDate" [eventSettings]="eventSettings"
+  <ejs-schedule #scheduleObj width='100%' height='550px'
+                [selectedDate]="selectedDate" [eventSettings]="eventSettings"
                 (popupOpen)="onPopUpOpen($event)"
-                (actionBegin)="onActionBegin($event)" (eventRendered)="onEventRendered($event)" [showQuickInfo]="showQuickInfo">
+                (actionBegin)="onActionBegin($event)" (eventRendered)="onEventRendered($event)"
+                [showQuickInfo]="showQuickInfo"
+                [workDays]="[1,2,3]"
+                [workHours]="worksHours"
+                (renderCell)="onRenderCell($event)"
+
+
+  >ù
+    <ng-template #cellTemplate let-data>
+      <div class="templatewrap" [innerHTML]="getCellContent(data.date)"></div>
+    </ng-template>
     <e-views>
       <e-view option="Day"></e-view>
       <e-view option="Week"></e-view>
@@ -15,7 +26,7 @@
           <td class="e-textlabel">Summary</td>
           <td colspan="4">
             <input id="Subject" class="e-field e-input" type="text" value="{{data.Subject}}"
-                   name="Subject" style="width: 100%" />
+                   name="Subject" style="width: 100%"/>
           </td>
         </tr>
         <tr>

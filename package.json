@@ -22,7 +22,10 @@
     "@syncfusion/ej2-angular-calendars": "^19.1.66",
     "@syncfusion/ej2-angular-dropdowns": "^19.1.69",
     "@syncfusion/ej2-angular-inputs": "^19.1.67",
+    "@syncfusion/ej2-angular-navigations": "^19.1.69",
     "@syncfusion/ej2-angular-schedule": "^19.1.69",
+    "@syncfusion/ej2-data": "^19.2.44",
+    "moment": "^2.29.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"

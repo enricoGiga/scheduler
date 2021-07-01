@@ -1,25 +1,32 @@
-import { Component, Inject, ViewEncapsulation } from '@angular/core';
+import {AfterViewInit, Component, Inject, ViewChild, ViewEncapsulation} from '@angular/core';
 import {
   ScheduleComponent, View, RenderCellEventArgs, EventRenderedArgs, MonthService,
   DayService, WeekService, WorkWeekService, EventSettingsModel, TimelineMonthService, ResizeService, DragAndDropService
 } from '@syncfusion/ej2-angular-schedule';
-import { Internationalization, extend } from '@syncfusion/ej2-base';
-import { scheduleData } from './data';
+import {Internationalization, extend} from '@syncfusion/ej2-base';
+import {scheduleData} from './data';
+
 @Component({
   selector: 'app-scheduler5',
   templateUrl: './scheduler5.component.html',
   styleUrls: ['./scheduler5.component.css']
 })
-export class Scheduler5Component  {
-
+export class Scheduler5Component implements AfterViewInit {
   // @ts-ignore
-  public eventSettings: EventSettingsModel = { dataSource: <Object[]>extend([], scheduleData, null, true) };
+  @ViewChild('scheduleObj') scheduleObj: ScheduleComponent;
+  // @ts-ignore
+  public eventSettings: EventSettingsModel = {dataSource: <Object[]>extend([], scheduleData, null, true)};
   public currentView: View = 'Week';
   public selectedDate: Date = new Date(2019, 0, 10);
   public instance: Internationalization = new Internationalization();
 
 
   constructor() {
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.scheduleObj)
+
   }
 
   getWeatherImage(value: Date): string | null {
@@ -44,7 +51,7 @@ export class Scheduler5Component  {
   }
 
   getDateHeaderText(value: any): string {
-    return this.instance.formatDate(value.date, { skeleton: 'Ed' });
+    return this.instance.formatDate(value.date, {skeleton: 'Ed'});
   }
 
   OnRenderCell(args: RenderCellEventArgs): void {
@@ -68,4 +75,24 @@ export class Scheduler5Component  {
       args.element.style.backgroundColor = categoryColor;
     }
   }
+
+  getSheduleObject(data: any, scheduleObj: ScheduleComponent) {
+    const eventsOnthisDay= scheduleObj.getCurrentViewEvents().filter(event =>this.datesAreOnSameDay( event.StartTime, data.date))
+    // @ts-ignore
+    const value: Array = eventsOnthisDay.map(value1 => {
+      return {starTime: value1.StartTime, endTime: value1.EndTime}
+    })
+      .map((value2: any) => value2.endTime.getHours() - value2.starTime.getHours())
+      .map((value3: any) => value3)
+    const reducer = (accumulator: number, curr: number) => accumulator + curr;
+    return value.reduce(reducer);
+
+  }
+
+  datesAreOnSameDay(first: Date, second: Date) {
+    return first.getFullYear() === second.getFullYear() &&
+      first.getMonth() === second.getMonth() &&
+      first.getDate() === second.getDate();
+  }
 }
+

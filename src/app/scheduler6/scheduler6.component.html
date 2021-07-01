@@ -1,0 +1,94 @@
+<div>
+  <div style="float: left">
+
+    <ejs-schedule #scheduleObj width="800" height='550px' [selectedDate]="selectedDate" [eventSettings]="eventSettings"
+                  [currentView]="currentView"
+
+                  (popupOpen)="onPopUpOpen($event)"
+                  (actionBegin)="onActionBegin($event)"
+                  (eventRendered)="onEventRendered($event)"
+                  [showQuickInfo]="showQuickInfo"
+
+
+                  [allowDragAndDrop]="true"
+                  [allowResizing]="true"
+                  (dragStart)="onDragStart($event)"
+                  (resizeStart)="onResizeStart($event)"
+
+    >
+      <ng-template #cellHeaderTemplate let-data>
+        <div class="date-text">{{getDateHeaderText(data.date)}}</div>
+      </ng-template>
+
+<!--      <ng-template #eventSettingsTemplate let-data>-->
+<!--        <div class="template-wrapper">-->
+<!--          {{data.Title}}-->
+<!--        </div>-->
+<!--      </ng-template>-->
+      <e-views>
+        <e-view option='Day' startHour="7:30" endHour="20:00">
+
+<!--          <ng-template #dateHeaderTemplate let-data>-->
+<!--            <div class="date-text">{{(data.date) + ' test'}}</div>-->
+<!--            &lt;!&ndash;            <div [innerHTML]="getWeather(data.date)"></div>&ndash;&gt;-->
+<!--          </ng-template>-->
+
+
+        </e-view>
+        <e-view option='Week' dateFormat='dd-MMM-yyyy' interval="2" displayName="2 weeks"></e-view>
+        <e-view option='Month' [showWeekend]="false" [readonly]="false">
+
+
+        </e-view>
+      </e-views>
+      <!--    <ng-template #editorTemplate let-data>-->
+      <!--      <table *ngIf="data != undefined" class="custom-event-editor" width="100%" cellpadding="5">-->
+      <!--        <tbody>-->
+      <!--        <tr>-->
+      <!--          <td class="e-textlabel">Summary</td>-->
+      <!--          <td colspan="4">-->
+      <!--            <input id="Subject" class="e-field e-input" type="text" value="{{data.Subject}}"-->
+      <!--                   name="Subject" style="width: 100%" />-->
+      <!--          </td>-->
+      <!--        </tr>-->
+      <!--        <tr>-->
+      <!--          <td class="e-textlabel">Status</td>-->
+      <!--          <td colspan="4">-->
+      <!--            <ejs-dropdownlist id='Status' class="e-field" data-name="Status" placeholder='Choose Status'-->
+      <!--                              [dataSource]='StatusData' [fields]='statusFields' value='{{data.Status}}'>-->
+      <!--            </ejs-dropdownlist>-->
+      <!--          </td>-->
+      <!--        </tr>-->
+      <!--        <tr>-->
+      <!--          <td class="e-textlabel">From</td>-->
+      <!--          <td colspan="4">-->
+      <!--            <ejs-datetimepicker id="StartTime" class="e-field" data-name="StartTime"-->
+      <!--                                format="M/dd/yy h:mm a" [value]="dateParser(data.startTime || data.StartTime)">-->
+      <!--            </ejs-datetimepicker>-->
+      <!--          </td>-->
+      <!--        </tr>-->
+      <!--        <tr>-->
+      <!--          <td class="e-textlabel">To</td>-->
+      <!--          <td colspan="4">-->
+      <!--            <ejs-datetimepicker id="EndTime" class="e-field" data-name="EndTime" format="M/dd/yy h:mm a"-->
+      <!--                                [value]='dateParser(data.endTime || data.EndTime)'></ejs-datetimepicker>-->
+      <!--          </td>-->
+      <!--        </tr>-->
+      <!--        <tr>-->
+      <!--          <td class="e-textlabel">Reason</td>-->
+      <!--          <td colspan="4">-->
+      <!--                            <textarea id="Description" class="e-field e-input" name="Description" rows="3" cols="50"-->
+      <!--                                      value="{{data.Description}}"-->
+      <!--                                      style="width: 100%; height: 60px !important; resize: vertical"></textarea>-->
+      <!--          </td>-->
+      <!--        </tr>-->
+      <!--        </tbody>-->
+      <!--      </table>-->
+      <!--    </ng-template>-->
+    </ejs-schedule>
+  </div>
+
+</div>
+<div style="width: 100px; float: left; margin-right: 150px ">
+  <ejs-treeview [fields]="fields" (nodeDragStop)="onNodeDragStop($event)" allowDragAndDrop="true"></ejs-treeview>
+</div>
