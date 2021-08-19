@@ -268,7 +268,7 @@ export class ContextalMenuComponent {
 
     // @ts-ignore
     if ($event.element.classList.contains('e-appointment')) {
-      this.selectedAppointment = $event.data;
+      this.copyTheSelectedEventGeneratingNewId($event);
       this.isSelectedAnAppoiment = true;
       this.isSelectedAWorkCell = false;
       // @ts-ignore
@@ -278,5 +278,12 @@ export class ContextalMenuComponent {
       this.isSelectedAWorkCell = true;
     }
 
+  }
+
+  private copyTheSelectedEventGeneratingNewId($event: SelectEventArgs) {
+    let allEvents = this.scheduleObj.getEvents()
+      .sort((a, b) => a.Id - b.Id)
+    const lastID = allEvents[allEvents.length - 1].Id
+    this.selectedAppointment = {...$event.data, Id: lastID + 1};
   }
 }
