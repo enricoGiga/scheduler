@@ -7,7 +7,7 @@ import { Scheduler1Component } from './scheduler1/scheduler1.component';
 import {AppRoutingModule} from "./app-routing.module";
 import { Scheduler2Component } from './scheduler2/scheduler2.component';
 import { Scheduler3Component } from './scheduler3/scheduler3.component';
-import {DateTimePickerAllModule} from "@syncfusion/ej2-angular-calendars";
+import {DatePickerModule, DateTimePickerAllModule} from "@syncfusion/ej2-angular-calendars";
 import {DropDownListAllModule} from "@syncfusion/ej2-angular-dropdowns";
 import { Scheduler4Component } from './scheduler4/scheduler4.component';
 import {ButtonAllModule} from "@syncfusion/ej2-angular-buttons";
@@ -15,6 +15,7 @@ import { Scheduler5Component } from './scheduler5/scheduler5.component';
 import {ContextMenuModule, TreeViewModule} from "@syncfusion/ej2-angular-navigations";
 import {Scheduler6Component} from "./scheduler6/scheduler6.component";
 import { ContextalMenuComponent } from './contextal-menu/contextal-menu.component';
+import { DefaultSchedulerComponent } from './default-scheduler/default-scheduler.component';
 
 @NgModule({
   declarations: [
@@ -25,11 +26,12 @@ import { ContextalMenuComponent } from './contextal-menu/contextal-menu.componen
     Scheduler4Component,
     Scheduler5Component,
     Scheduler6Component,
+    DefaultSchedulerComponent,
     ContextalMenuComponent
   ],
-    imports: [
-        BrowserModule, ScheduleModule, AppRoutingModule, DateTimePickerAllModule, DropDownListAllModule, ButtonAllModule, TreeViewModule, ContextMenuModule
-    ],
+  imports: [
+    BrowserModule, ScheduleModule, AppRoutingModule, DateTimePickerAllModule, DropDownListAllModule, ButtonAllModule, TreeViewModule, ContextMenuModule, DatePickerModule
+  ],
   providers: [WeekService,
     MonthService],
   bootstrap: [AppComponent]

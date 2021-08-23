@@ -9,7 +9,7 @@ import {
   MonthService,
   AgendaService,
   ScheduleComponent,
-  CellClickEventArgs, PopupOpenEventArgs, SelectEventArgs
+  CellClickEventArgs, PopupOpenEventArgs, SelectEventArgs, Timezone
 } from '@syncfusion/ej2-angular-schedule';
 import {
   ContextMenuComponent,
